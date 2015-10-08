@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Monster Bash LSystems</title>
+    <link href="lsystems.css" type="text/css" rel="stylesheet">
+    <script src="bundle.js" type="text/javascript"></script>
+  </head>
+  <html>
+    <body>
+      <h1 id="pageHeader">Monster Bash L-Systems Tool </h1>
+      <h4 id="name">By: Christian Hughes</h4>
+      <div id="L-Systems_tool">
+        <canvas id="canvas" width=760 height=480></canvas>
+        <div>
+          <label for="svg-output">
+            SVG Output:
+            <textarea id="svg-output" disabled="true"></textarea>
+          </label>
+        </div>
+        <label for="prod">
+          String Output:
+          <input type="text" id="prod" disabled=true/>
+        </label>
+        <label for="rules">
+          Rules:
+          <input type="text" id="rules" value="F->F+(90)F-(90)F-(90)F+(90)F|(00008B)#(0000A1)"/>
+        </label>
+        <label for="axiom">
+          Axiom:
+          <input type="text" id="axiom" value="-(90)F" />
+        </label>
+        <label for="iterations">
+          Iterations:
+          <input type="number" id="iterations" value=3 />
+        </label>
+        <div>
+          <button type="button" id="submitButton">Generate</button>
+        </div>
+      </div>
+        <p1><b>Instructions: </b>Enter input in the <i>Rules</i>, <i>Axiom</i>, and <i>Iterations</i> fields. The <i>Axiom</i> should be a single string without spaces. <i>Rules</i> should follow the pattern <b>before</b>-><b>after</b>. Multiple rules should be seperated by commas, and spaces are not allowed (Ex. A->B,B->AB). Press generate to draw the L-System/create an equivalent SVG snippet. <i>Fill is off by default, and stroke is set to black by default.</i></p1>
+        <h2>Gramatical Components:</h2>
+        <p2>
+          <b>#(<i>Color</i>)</b> - Use this to set the fill color. Color input should be a hexadecmial value with the hashtag ommited (ex. #(00008B)). Once set, the subsequent path is filled with color, until the fill color is changed. Specifying #(none) will turn off the fill.<br><br>
+          <b>|(<i>Color</i>)</b> - Use this to set the stroke color. Color input should be a hexadecmial value with the hashtag ommited (ex. |(00008B)). Once set, the subsequent path is stroked with color, until the stroke color is changed. Specifying |(none) will turn off the fill.<br><br>
+          <b>+(<i>Degrees</i>)</b> - Turn right by the specified degrees.<br><br>
+          <b>-(<i>Degrees</i>)</b> - Turn left by the specified degrees.<br><br>
+          <b>[</b> - Saves the state (x value, y value, angle, fill color and state, stroke color and state).<br><br>
+          <b>]</b> - Restores the last saved state.
+        </p2>
+    </body>
+  </html>
